@@ -26,4 +26,13 @@ class User extends Authenticatable
 
     public function job_seeker(): HasOne
     { return $this->hasOne(JobSeeker::class); }
+
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return [];
+    }
 }
