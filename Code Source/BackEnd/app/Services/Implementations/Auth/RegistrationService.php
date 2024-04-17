@@ -56,6 +56,6 @@ class RegistrationService extends BaseService implements RegistrationServiceInte
         if ($request->isMethod('POST')) {
             return $this->register($request, 'Admin', Admin::class);
         }
-        return $this->responseWithErrors($request->method());
+        return $this->incorrectHttpMethod();
     }
 }

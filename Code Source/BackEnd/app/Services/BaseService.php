@@ -24,4 +24,6 @@ class BaseService
     protected function responseWithSuccess($data): JsonResponse
     { return $this->response(true, 'data', $data); }
 
+    public function storePicture(Request $request, $fileName, )
+    { return $request->file($fileName)->store('/public'); }
 }

@@ -19,7 +19,7 @@ class AuthenticationService extends BaseService implements AuthenticationService
                 ]);
             } catch (\Illuminate\Validation\ValidationException $validationException) { return $this->responseWithErrors($validationException->validator->errors()->all()); }
 
-            if ($token = auth()->attempt($credentials)) { return $this->responseWithSuccess($token); }
+            if ($token = auth()->attempt($credentials)) { return $this->responseWithSuccess(["token" => $token]); }
             return $this->responseWithErrors("Unauthorized");
         }
         return $this->incorrectHttpMethod();
@@ -37,7 +37,7 @@ class AuthenticationService extends BaseService implements AuthenticationService
     public function refresh(Request $request)
     {
         if ($request->isMethod('POST')) {
-            return $this->responseWithSuccess(auth()->refresh());
+            return $this->responseWithSuccess(["token" => auth()->refresh()]);
         }
         return $this->incorrectHttpMethod();
     }

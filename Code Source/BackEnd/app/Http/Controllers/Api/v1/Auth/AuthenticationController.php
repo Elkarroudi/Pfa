@@ -25,13 +25,13 @@ class AuthenticationController extends Controller
     {
         try {
             return $this->authenticationService->refresh($request);
-        } catch (Exception $e) { return $this->responseWithErrors("Authentication", "Login", $e); }
+        } catch (Exception $e) { return $this->responseWithErrors("Authentication", "Refresh", $e); }
     }
 
     public function logout(Request $request)
     {
         try {
             return $this->authenticationService->logout($request);
-        } catch (Exception $e) { return $this->responseWithErrors("Authentication", "Login", $e); }
+        } catch (Exception $e) { return $this->responseWithErrors("Authentication", "Logout", $e); }
     }
 }
