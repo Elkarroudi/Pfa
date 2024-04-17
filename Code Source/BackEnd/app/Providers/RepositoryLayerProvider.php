@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\Auth\RegistrationRepositoryInterface;
+use App\Repositories\Implementations\Auth\RegistrationRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryLayerProvider extends ServiceProvider
@@ -19,6 +21,6 @@ class RepositoryLayerProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        app()->bind(RegistrationRepositoryInterface::class, RegistrationRepository::class);
     }
 }

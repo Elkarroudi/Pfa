@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class BaseService

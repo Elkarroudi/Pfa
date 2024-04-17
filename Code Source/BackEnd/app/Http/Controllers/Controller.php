@@ -16,7 +16,7 @@ class Controller extends BaseController
         return response()->json([
             'status' => false,
             'errors' => [
-                'message' => "Error In Controller $controller ( methode : $method) ",
+                'message' => "Error In $controller Controller / ( methode : $method) ",
                 'details' => $e->getMessage(),
             ]
         ]);
