@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
 use App\Http\Controllers\Api\v1\Auth\RegistrationController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')->group(function () {
 
     Route::middleware('notLoggedIn')->group(function () {
-        Route::prefix('auth')->group(function () {
-            Route::any('/register/seeker/', [RegistrationController::class, 'jobSeeker']);
-            Route::any('/register/recruiter/', [RegistrationController::class, 'recruiter']);
-        });
+        Route::any('/auth/register/seeker/', [RegistrationController::class, 'jobSeeker']);
+        Route::any('/auth/register/recruiter/', [RegistrationController::class, 'recruiter']);
+        Route::any('/auth/login/', [AuthenticationController::class, 'login']);
+    });
+
+    Route::middleware('isLoggedIn')->group(function () {
+        Route::any('/auth/refresh/', [AuthenticationController::class, 'refresh']);
+        Route::any('/auth/logout/', [AuthenticationController::class, 'logout']);
     });
 });

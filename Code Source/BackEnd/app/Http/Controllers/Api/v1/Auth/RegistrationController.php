@@ -11,7 +11,8 @@ use Mockery\Exception;
 class RegistrationController extends Controller
 {
     protected RegistrationServiceInterface $registrationService;
-    public function __construct(RegistrationServiceInterface $registrationService) { $this->registrationService = $registrationService; }
+    public function __construct(RegistrationServiceInterface $registrationService)
+    { $this->registrationService = $registrationService; }
 
 
 
