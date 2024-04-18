@@ -4,6 +4,7 @@ namespace App\Services\Implementations\JobSeeker;
 
 use App\Models\Application;
 use App\Models\JobSeeker;
+use App\Models\Listing;
 use App\Repositories\Contracts\JobSeeker\ApplicationRepositoryInterface;
 use App\Services\BaseService;
 use App\Services\Contracts\JobSeeker\ApplicationServiceInterface;
@@ -34,10 +35,13 @@ class ApplicationService extends BaseService implements ApplicationServiceInterf
             } catch (\Illuminate\Validation\ValidationException $validationException)
             { return $this->responseWithErrors($validationException->validator->errors()->all()); }
 
-            $validatedData['date'] = date('Y-m-d');
-            $validatedData['job_seeker_id'] = (new JobSeeker())->getId('job_seekers');
-            $application = $this->applicationRepository->create($validatedData);
-            return $this->responseWithSuccess($application);
+            if (Listing::find($validatedData['listing_id'])) {
+                $validatedData['date'] = date('Y-m-d');
+                $validatedData['job_seeker_id'] = (new JobSeeker())->getId('job_seekers');
+                $application = $this->applicationRepository->create($validatedData);
+                return $this->responseWithSuccess($application);
+            }
+            return $this->responseWithErrors('Listing Not Found To Create A Bookmark !');
         }
         return $this->incorrectHttpMethod();
     }

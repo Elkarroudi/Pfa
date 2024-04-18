@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\Admin\CompanyController;
 use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
 use App\Http\Controllers\Api\v1\Auth\RegistrationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ApplicationController;
+use App\Http\Controllers\Api\v1\JobSeeker\BookmarkController;
 use App\Http\Controllers\Api\v1\JobSeeker\EducationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ExperienceController;
 use App\Http\Controllers\Api\v1\Recruiter\ListingController;
@@ -68,6 +69,11 @@ Route::prefix('v1')->group(function () {
                 Route::any('/delete/{id}/', [ApplicationController::class, 'delete']);
             });
 
+            Route::prefix('bookmark')->group(function () {
+                Route::any('/all/', [BookmarkController::class, 'index']);
+                Route::any('/create/', [BookmarkController::class, 'create']);
+                Route::any('/delete/{id}/', [BookmarkController::class, 'delete']);
+            });
         });
 
         /* Recruiter Routes =============== */
