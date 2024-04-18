@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\v1\Admin\CompanyController;
 use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
 use App\Http\Controllers\Api\v1\Auth\RegistrationController;
 use App\Http\Controllers\Api\v1\JobSeeker\EducationController;
+use App\Http\Controllers\Api\v1\JobSeeker\ExperienceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,13 @@ Route::prefix('v1')->group(function () {
                 Route::any('/create/', [EducationController::class, 'create']);
                 Route::any('/update/{id}/', [EducationController::class, 'update']);
                 Route::any('/delete/{id}/', [EducationController::class, 'delete']);
+            });
+
+            Route::prefix('experience')->group(function () {
+                Route::any('/all/', [ExperienceController::class, 'index']);
+                Route::any('/create/', [ExperienceController::class, 'create']);
+                Route::any('/update/{id}/', [ExperienceController::class, 'update']);
+                Route::any('/delete/{id}/', [ExperienceController::class, 'delete']);
             });
 
         });

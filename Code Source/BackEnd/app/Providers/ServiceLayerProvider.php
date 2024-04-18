@@ -6,10 +6,12 @@ use App\Services\Contracts\Admin\CompanyServiceInterface;
 use App\Services\Contracts\Auth\AuthenticationServiceInterface;
 use App\Services\Contracts\Auth\RegistrationServiceInterface;
 use App\Services\Contracts\JobSeeker\EducationServiceInterface;
+use App\Services\Contracts\JobSeeker\ExperienceServiceInterface;
 use App\Services\Implementations\Admin\CompanyService;
 use App\Services\Implementations\Auth\AuthenticationService;
 use App\Services\Implementations\Auth\RegistrationService;
 use App\Services\Implementations\JobSeeker\EducationService;
+use App\Services\Implementations\JobSeeker\ExperienceService;
 use Illuminate\Support\ServiceProvider;
 
 class ServiceLayerProvider extends ServiceProvider
@@ -35,5 +37,6 @@ class ServiceLayerProvider extends ServiceProvider
 
         /* Job Seeker */
         app()->bind(EducationServiceInterface::class, EducationService::class);
+        app()->bind(ExperienceServiceInterface::class, ExperienceService::class);
     }
 }
