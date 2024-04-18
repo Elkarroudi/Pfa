@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
 use App\Http\Controllers\Api\v1\Auth\RegistrationController;
 use App\Http\Controllers\Api\v1\JobSeeker\EducationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ExperienceController;
+use App\Http\Controllers\Api\v1\Recruiter\ListingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,6 +61,16 @@ Route::prefix('v1')->group(function () {
                 Route::any('/delete/{id}/', [ExperienceController::class, 'delete']);
             });
 
+        });
+
+        /* Recruiter Routes =============== */
+        Route::middleware('access:Recruiter')->group(function () {
+            Route::prefix('listing')->group(function () {
+                Route::any('/all/', [ListingController::class, 'index']);
+                Route::any('/create/', [ListingController::class, 'create']);
+                Route::any('/update/{id}/', [ListingController::class, 'update']);
+                Route::any('/delete/{id}/', [ListingController::class, 'delete']);
+            });
         });
 
 
