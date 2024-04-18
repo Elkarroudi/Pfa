@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\v1\Admin\CompanyController;
 use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
 use App\Http\Controllers\Api\v1\Auth\RegistrationController;
+use App\Http\Controllers\Api\v1\JobSeeker\ApplicationController;
 use App\Http\Controllers\Api\v1\JobSeeker\EducationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ExperienceController;
 use App\Http\Controllers\Api\v1\Recruiter\ListingController;
@@ -59,6 +60,12 @@ Route::prefix('v1')->group(function () {
                 Route::any('/create/', [ExperienceController::class, 'create']);
                 Route::any('/update/{id}/', [ExperienceController::class, 'update']);
                 Route::any('/delete/{id}/', [ExperienceController::class, 'delete']);
+            });
+
+            Route::prefix('application')->group(function () {
+                Route::any('/all/', [ApplicationController::class, 'index']);
+                Route::any('/create/', [ApplicationController::class, 'create']);
+                Route::any('/delete/{id}/', [ApplicationController::class, 'delete']);
             });
 
         });
