@@ -20,6 +20,7 @@ class BaseModel extends Model
     public function getId($tableName)
     {
         $id = DB::table('users')
+            ->where('users.id', '=', auth()->id())
             ->join("$tableName", 'users.id', '=', "$tableName.user_id")
             ->select("$tableName.id")
             ->get();
