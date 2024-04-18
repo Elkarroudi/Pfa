@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\Admin\CompanyController;
+use App\Http\Controllers\Api\v1\Auth\AccountController;
 use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
 use App\Http\Controllers\Api\v1\Auth\RegistrationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ApplicationController;
@@ -25,17 +26,27 @@ Route::prefix('v1')->group(function () {
 
     /* Route That Require Non-Authenticated User */
     Route::middleware('notLoggedIn')->group(function () {
-        Route::any('/auth/register/seeker/', [RegistrationController::class, 'jobSeeker']);
-        Route::any('/auth/register/recruiter/', [RegistrationController::class, 'recruiter']);
-        Route::any('/auth/login/', [AuthenticationController::class, 'login']);
+        Route::prefix('auth')->group(function() {
+            Route::any('/register/seeker/', [RegistrationController::class, 'jobSeeker']);
+            Route::any('/register/recruiter/', [RegistrationController::class, 'recruiter']);
+            Route::any('/login/', [AuthenticationController::class, 'login']);
 
-        Route::any('/auth/admin/', [RegistrationController::class, 'admin']); // To Delete After
+            Route::any('/admin/', [RegistrationController::class, 'admin']); // To Delete After
+        });
     });
 
     /* Route That Require Authenticated User */
     Route::middleware('isLoggedIn')->group(function () {
-        Route::any('/auth/refresh/', [AuthenticationController::class, 'refresh']);
-        Route::any('/auth/logout/', [AuthenticationController::class, 'logout']);
+
+        /* Auth & Account Routes =============== */
+        Route::prefix('auth')->group(function() {
+            Route::any('/refresh/', [AuthenticationController::class, 'refresh']);
+            Route::any('/logout/', [AuthenticationController::class, 'logout']);
+
+            Route::any('/profile/', [AccountController::class, 'accountInformation']);
+            Route::any('/profile/update/', [AccountController::class, 'updateAccountInformation']);
+            Route::any('/password/update/', [AccountController::class, 'updatePassword']);
+        });
 
         /* Admin Routes =============== */
         Route::middleware('access:Admin')->group(function () {
@@ -85,7 +96,5 @@ Route::prefix('v1')->group(function () {
                 Route::any('/delete/{id}/', [ListingController::class, 'delete']);
             });
         });
-
-
     });
 });

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Repositories\Contracts\Admin\CompanyRepositoryInterface;
+use App\Repositories\Contracts\Auth\AccountRepositoryInterface;
 use App\Repositories\Contracts\Auth\RegistrationRepositoryInterface;
 use App\Repositories\Contracts\JobSeeker\ApplicationRepositoryInterface;
 use App\Repositories\Contracts\JobSeeker\BookmarkRepositoryInterface;
@@ -10,6 +11,7 @@ use App\Repositories\Contracts\JobSeeker\EducationRepositoryInterface;
 use App\Repositories\Contracts\JobSeeker\ExperienceRepositoryInterface;
 use App\Repositories\Contracts\Recruiter\ListingRepositoryInterface;
 use App\Repositories\Implementations\Admin\CompanyRepository;
+use App\Repositories\Implementations\Auth\AccountRepository;
 use App\Repositories\Implementations\Auth\RegistrationRepository;
 use App\Repositories\Implementations\JobSeeker\ApplicationRepository;
 use App\Repositories\Implementations\JobSeeker\BookmarkRepository;
@@ -34,6 +36,7 @@ class RepositoryLayerProvider extends ServiceProvider
     public function boot(): void
     {
         app()->bind(RegistrationRepositoryInterface::class, RegistrationRepository::class);
+        app()->bind(AccountRepositoryInterface::class, AccountRepository::class);
 
         /* Admin */
         app()->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
