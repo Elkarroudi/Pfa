@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\v1\JobSeeker\BookmarkController;
 use App\Http\Controllers\Api\v1\JobSeeker\EducationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ExperienceController;
 use App\Http\Controllers\Api\v1\Recruiter\ListingController;
+use App\Http\Controllers\Api\v1\Recruiter\RecruiterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,6 +96,11 @@ Route::prefix('v1')->group(function () {
                 Route::any('/update/{id}/', [ListingController::class, 'update']);
                 Route::any('/delete/{id}/', [ListingController::class, 'delete']);
             });
+
+            Route::any('/application/all/', [RecruiterController::class, 'recruiterJobsApplicant']);
+            Route::any('/application/{status}/{id}/', [RecruiterController::class, 'changeStatus']);
         });
     });
+
+    /* Website Routes */
 });

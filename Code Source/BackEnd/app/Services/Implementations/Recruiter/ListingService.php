@@ -24,7 +24,8 @@ class ListingService extends BaseService implements ListingServiceInterface
             $recruiter = Recruiter::find((new Recruiter())->getId('recruiters'));
             return $this->responseWithSuccess($this->listingRepository->index($recruiter));
         }
-        return $this->incorrectHttpMethod();    }
+        return $this->incorrectHttpMethod();
+    }
 
     public function create(Request $request)
     {

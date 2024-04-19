@@ -10,6 +10,7 @@ use App\Repositories\Contracts\JobSeeker\BookmarkRepositoryInterface;
 use App\Repositories\Contracts\JobSeeker\EducationRepositoryInterface;
 use App\Repositories\Contracts\JobSeeker\ExperienceRepositoryInterface;
 use App\Repositories\Contracts\Recruiter\ListingRepositoryInterface;
+use App\Repositories\Contracts\Recruiter\RecruiterRepositoryInterface;
 use App\Repositories\Implementations\Admin\CompanyRepository;
 use App\Repositories\Implementations\Auth\AccountRepository;
 use App\Repositories\Implementations\Auth\RegistrationRepository;
@@ -18,6 +19,7 @@ use App\Repositories\Implementations\JobSeeker\BookmarkRepository;
 use App\Repositories\Implementations\JobSeeker\EducationRepository;
 use App\Repositories\Implementations\JobSeeker\ExperienceRepository;
 use App\Repositories\Implementations\Recruiter\ListingRepository;
+use App\Repositories\Implementations\Recruiter\RecruiterRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryLayerProvider extends ServiceProvider
@@ -49,5 +51,6 @@ class RepositoryLayerProvider extends ServiceProvider
 
         /* Recruiter */
         app()->bind(ListingRepositoryInterface::class, ListingRepository::class);
+        app()->bind(RecruiterRepositoryInterface::class, RecruiterRepository::class);
     }
 }
