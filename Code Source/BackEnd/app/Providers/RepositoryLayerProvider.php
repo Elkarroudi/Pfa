@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\Admin\AdminRepositoryInterface;
 use App\Repositories\Contracts\Admin\CompanyRepositoryInterface;
 use App\Repositories\Contracts\Auth\AccountRepositoryInterface;
 use App\Repositories\Contracts\Auth\RegistrationRepositoryInterface;
@@ -11,6 +12,7 @@ use App\Repositories\Contracts\JobSeeker\EducationRepositoryInterface;
 use App\Repositories\Contracts\JobSeeker\ExperienceRepositoryInterface;
 use App\Repositories\Contracts\Recruiter\ListingRepositoryInterface;
 use App\Repositories\Contracts\Recruiter\RecruiterRepositoryInterface;
+use App\Repositories\Implementations\Admin\AdminRepository;
 use App\Repositories\Implementations\Admin\CompanyRepository;
 use App\Repositories\Implementations\Auth\AccountRepository;
 use App\Repositories\Implementations\Auth\RegistrationRepository;
@@ -42,6 +44,7 @@ class RepositoryLayerProvider extends ServiceProvider
 
         /* Admin */
         app()->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
+        app()->bind(AdminRepositoryInterface::class, AdminRepository::class);
 
         /* Job Seeker */
         app()->bind(EducationRepositoryInterface::class, EducationRepository::class);

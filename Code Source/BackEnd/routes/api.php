@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\v1\Admin\AdminController;
 use App\Http\Controllers\Api\v1\Admin\CompanyController;
 use App\Http\Controllers\Api\v1\Auth\AccountController;
 use App\Http\Controllers\Api\v1\Auth\AuthenticationController;
@@ -31,8 +32,6 @@ Route::prefix('v1')->group(function () {
             Route::any('/register/seeker/', [RegistrationController::class, 'jobSeeker']);
             Route::any('/register/recruiter/', [RegistrationController::class, 'recruiter']);
             Route::any('/login/', [AuthenticationController::class, 'login']);
-
-            Route::any('/admin/', [RegistrationController::class, 'admin']); // To Delete After
         });
     });
 
@@ -56,6 +55,13 @@ Route::prefix('v1')->group(function () {
                 Route::any('/create/', [CompanyController::class, 'create']);
                 Route::any('/update/{id}/', [CompanyController::class, 'update']);
                 Route::any('/delete/{id}/', [CompanyController::class, 'delete']);
+            });
+
+            Route::prefix('admin')->group(function() {
+                Route::any('/listing/all/', [AdminController::class, 'recruitersListings']);
+                Route::any('/listing/{status}/{id}/', [AdminController::class, 'changeStatus']);
+                Route::any('/statistics/', [AdminController::class, 'statistics']);
+                Route::any('/register/', [AdminController::class, 'registerAnAdmin']);
             });
         });
 
@@ -97,8 +103,8 @@ Route::prefix('v1')->group(function () {
                 Route::any('/delete/{id}/', [ListingController::class, 'delete']);
             });
 
-            Route::any('/application/all/', [RecruiterController::class, 'recruiterJobsApplicant']);
-            Route::any('/application/{status}/{id}/', [RecruiterController::class, 'changeStatus']);
+            Route::any('/recruiter/application/all/', [RecruiterController::class, 'recruiterJobsApplicant']);
+            Route::any('/recruiter/application/{status}/{id}/', [RecruiterController::class, 'changeStatus']);
         });
     });
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Contracts\Admin\AdminServiceInterface;
 use App\Services\Contracts\Admin\CompanyServiceInterface;
 use App\Services\Contracts\Auth\AccountServiceInterface;
 use App\Services\Contracts\Auth\AuthenticationServiceInterface;
@@ -12,6 +13,7 @@ use App\Services\Contracts\JobSeeker\EducationServiceInterface;
 use App\Services\Contracts\JobSeeker\ExperienceServiceInterface;
 use App\Services\Contracts\Recruiter\ListingServiceInterface;
 use App\Services\Contracts\Recruiter\RecruiterServiceInterface;
+use App\Services\Implementations\Admin\AdminService;
 use App\Services\Implementations\Admin\CompanyService;
 use App\Services\Implementations\Auth\AccountService;
 use App\Services\Implementations\Auth\AuthenticationService;
@@ -45,6 +47,7 @@ class ServiceLayerProvider extends ServiceProvider
 
         /* Admin */
         app()->bind(CompanyServiceInterface::class, CompanyService::class);
+        app()->bind(AdminServiceInterface::class, AdminService::class);
 
         /* Job Seeker */
         app()->bind(EducationServiceInterface::class, EducationService::class);

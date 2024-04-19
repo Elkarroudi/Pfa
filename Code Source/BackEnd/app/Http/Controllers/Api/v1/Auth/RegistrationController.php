@@ -30,7 +30,6 @@ class RegistrationController extends Controller
         } catch (Exception $e) { return $this->responseWithErrors("Registration", "Recruiter", $e); }
     }
 
-
     public function admin(Request $request)
     {
         try {
