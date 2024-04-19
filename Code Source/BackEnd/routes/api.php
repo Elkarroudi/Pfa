@@ -61,6 +61,7 @@ Route::prefix('v1')->group(function () {
                 Route::any('/listing/all/', [AdminController::class, 'recruitersListings']);
                 Route::any('/listing/{status}/{id}/', [AdminController::class, 'changeStatus']);
                 Route::any('/statistics/', [AdminController::class, 'statistics']);
+                Route::any('/users/', [AdminController::class, 'users']);
                 Route::any('/register/', [AdminController::class, 'registerAnAdmin']);
             });
         });
@@ -105,6 +106,7 @@ Route::prefix('v1')->group(function () {
 
             Route::any('/recruiter/application/all/', [RecruiterController::class, 'recruiterJobsApplicant']);
             Route::any('/recruiter/application/{status}/{id}/', [RecruiterController::class, 'changeStatus']);
+            Route::any('/recruiter/statistics/', [RecruiterController::class, 'statistics']);
         });
     });
 

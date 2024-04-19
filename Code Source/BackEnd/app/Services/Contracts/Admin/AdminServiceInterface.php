@@ -10,4 +10,6 @@ interface AdminServiceInterface
     public function changeStatus(Request $request, $status, $id);
     public function statistics(Request $request);
     public function registerAnAdmin(Request $request);
+
+    public function users(Request $request);
 }

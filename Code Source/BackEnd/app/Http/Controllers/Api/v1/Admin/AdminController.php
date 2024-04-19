@@ -38,6 +38,13 @@ class AdminController extends Controller
     {
         try {
             return $this->adminService->registerAnAdmin($request);
-        } catch (Exception $e) { return $this->responseWithErrors("Registration", "Admin", $e); }
+        } catch (Exception $e) { return $this->responseWithErrors("Admin", "registerAnAdmin", $e); }
+    }
+
+    public function users(Request $request)
+    {
+        try {
+            return $this->adminService->users($request);
+        } catch (Exception $e) { return $this->responseWithErrors("Admin", "users", $e); }
     }
 }

@@ -69,4 +69,12 @@ class AdminService extends BaseService implements AdminServiceInterface
         }
         return $this->incorrectHttpMethod();
     }
+
+    public function users(Request $request)
+    {
+        if ($request->isMethod('GET')) {
+            return $this->adminRepository->users();
+        }
+        return $this->incorrectHttpMethod();
+    }
 }

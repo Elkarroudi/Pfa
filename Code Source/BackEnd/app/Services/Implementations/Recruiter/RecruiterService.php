@@ -40,4 +40,13 @@ class RecruiterService extends BaseService implements RecruiterServiceInterface
         }
         return $this->incorrectHttpMethod();
     }
+
+    public function statistics(Request $request)
+    {
+        if ($request->isMethod('GET')) {
+            $recruiter = Recruiter::find((new Recruiter())->getId('recruiters'));
+            return $this->responseWithSuccess($this->recruiterRepository->statistics($recruiter));
+        }
+        return $this->incorrectHttpMethod();
+    }
 }

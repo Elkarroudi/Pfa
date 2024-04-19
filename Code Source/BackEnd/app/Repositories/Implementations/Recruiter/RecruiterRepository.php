@@ -24,4 +24,12 @@ class RecruiterRepository implements RecruiterRepositoryInterface
     {
         return $application->update($data);
     }
+
+    public function statistics(Recruiter $recruiter)
+    {
+        return [
+            'listings' => $recruiter->listings()->count(),
+            'applications' => $recruiter->applications()->count(),
+        ];
+    }
 }

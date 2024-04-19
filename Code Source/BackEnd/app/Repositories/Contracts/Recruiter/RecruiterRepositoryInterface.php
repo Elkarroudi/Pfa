@@ -9,4 +9,5 @@ interface RecruiterRepositoryInterface
 {
     public function recruiterJobsApplicant(Recruiter $recruiter);
     public function changeStatus(Application $application, $data);
+    public function statistics(Recruiter $recruiter);
 }

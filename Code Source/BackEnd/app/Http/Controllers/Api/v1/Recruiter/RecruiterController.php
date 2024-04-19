@@ -26,4 +26,10 @@ class RecruiterController extends Controller
             return $this->recruiterService->changeStatus($request, $status, $id);
         } catch (Exception $e) { return $this->responseWithErrors("Recruiter", "changeStatus", $e); }
     }
+
+    public function statistics(Request $request) {
+        try {
+            return $this->recruiterService->statistics($request);
+        } catch (Exception $e) { return $this->responseWithErrors("Recruiter", "statistics", $e); }
+    }
 }

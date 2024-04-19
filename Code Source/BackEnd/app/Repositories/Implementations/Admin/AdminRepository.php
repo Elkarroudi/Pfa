@@ -27,10 +27,15 @@ class AdminRepository implements AdminRepositoryInterface
             'jobSeekers' => User::withoutTrashed()->where('type', '=', 'Job Seeker')->count(),
             'recruiters' => User::withoutTrashed()->where('type', '=', 'Recruiter')->count(),
             'admins' => User::withoutTrashed()->where('type', '=', 'Admin')->count(),
-            'Listings' => Listing::withoutTrashed()->count(),
-            'Trashed_listings' => Listing::onlyTrashed()->count(),
-            'Applications' => Application::withoutTrashed()->count(),
-            'Companies' => Company::withoutTrashed()->count(),
+            'listings' => Listing::withoutTrashed()->count(),
+            'trashed_listings' => Listing::onlyTrashed()->count(),
+            'applications' => Application::withoutTrashed()->count(),
+            'companies' => Company::withoutTrashed()->count(),
         ];
+    }
+
+    public function users()
+    {
+        return User::withoutTrashed()->get();
     }
 }
