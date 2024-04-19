@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\v1\JobSeeker\ApplicationController;
 use App\Http\Controllers\Api\v1\JobSeeker\BookmarkController;
 use App\Http\Controllers\Api\v1\JobSeeker\EducationController;
 use App\Http\Controllers\Api\v1\JobSeeker\ExperienceController;
+use App\Http\Controllers\Api\v1\Public\WebsiteController;
 use App\Http\Controllers\Api\v1\Recruiter\ListingController;
 use App\Http\Controllers\Api\v1\Recruiter\RecruiterController;
 use Illuminate\Support\Facades\Route;
@@ -111,4 +112,7 @@ Route::prefix('v1')->group(function () {
     });
 
     /* Website Routes */
+    Route::any('/public/listing/all/', [WebsiteController::class, 'validatedListing']);
+    Route::any('/public/listing/search/', [WebsiteController::class, 'search']);
+
 });

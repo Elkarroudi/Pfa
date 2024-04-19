@@ -11,6 +11,7 @@ use App\Services\Contracts\JobSeeker\ApplicationServiceInterface;
 use App\Services\Contracts\JobSeeker\BookmarkServiceInterface;
 use App\Services\Contracts\JobSeeker\EducationServiceInterface;
 use App\Services\Contracts\JobSeeker\ExperienceServiceInterface;
+use App\Services\Contracts\Public\WebsiteServiceInterface;
 use App\Services\Contracts\Recruiter\ListingServiceInterface;
 use App\Services\Contracts\Recruiter\RecruiterServiceInterface;
 use App\Services\Implementations\Admin\AdminService;
@@ -22,6 +23,7 @@ use App\Services\Implementations\JobSeeker\ApplicationService;
 use App\Services\Implementations\JobSeeker\BookmarkService;
 use App\Services\Implementations\JobSeeker\EducationService;
 use App\Services\Implementations\JobSeeker\ExperienceService;
+use App\Services\Implementations\Public\WebsiteService;
 use App\Services\Implementations\Recruiter\ListingService;
 use App\Services\Implementations\Recruiter\RecruiterService;
 use Illuminate\Support\ServiceProvider;
@@ -44,6 +46,7 @@ class ServiceLayerProvider extends ServiceProvider
         app()->bind(RegistrationServiceInterface::class, RegistrationService::class);
         app()->bind(AuthenticationServiceInterface::class, AuthenticationService::class);
         app()->bind(AccountServiceInterface::class, AccountService::class);
+        app()->bind(WebsiteServiceInterface::class, WebsiteService::class);
 
         /* Admin */
         app()->bind(CompanyServiceInterface::class, CompanyService::class);
