@@ -18,9 +18,9 @@
         <Logo link-to="/" icon="logos/logo.png" />
 
         <nav class="flex gap-x-4" >
-          <Button type="third" link-to="/jobs" > Jobs </Button>
-          <Button type="secondary" link-to="/login" icon="icons/login.png" > Login </Button>
-          <Button type="primary" link-to="/register" > Register </Button>
+          <Button type="third" link-to="/jobs" > jobs </Button>
+          <Button type="secondary" link-to="/login" icon="icons/login.png" > login </Button>
+          <Button type="primary" link-to="/register" > register </Button>
         </nav>
 
       </div>

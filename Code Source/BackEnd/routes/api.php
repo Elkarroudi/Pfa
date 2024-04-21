@@ -115,4 +115,7 @@ Route::prefix('v1')->group(function () {
     Route::any('/public/listing/all/', [WebsiteController::class, 'validatedListing']);
     Route::any('/public/listing/search/', [WebsiteController::class, 'search']);
 
+    Route::any('/public/company/all/', [WebsiteController::class, 'companies']);
+
+
 });

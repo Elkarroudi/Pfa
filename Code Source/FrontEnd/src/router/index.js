@@ -10,6 +10,11 @@
         name: 'home',
         component: HomePage,
       },
+      {
+        path: '/login',
+        name: 'login',
+        component: () => import('../views/Authentication/Login.vue'),
+      },
 
     ]
   })

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1\Public;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Services\Contracts\Public\WebsiteServiceInterface;
 use Illuminate\Http\Request;
 use Mockery\Exception;
@@ -26,6 +27,16 @@ class WebsiteController extends Controller
         try {
             return $this->websiteService->search($request);
         } catch (Exception $e) { return $this->responseWithErrors("Website", "Search", $e); }
+    }
+
+    public function companies(Request $request)
+    {
+        try {
+            return response()->json([
+                'status' => true,
+                'data' => Company::withoutTrashed()->get(),
+            ]);
+        } catch (Exception $e) { return $this->responseWithErrors("Website", "companies", $e); }
     }
 
 }

@@ -12,10 +12,6 @@
 
   <template>
     <Header />
-    <main
-        class="w-[85%] m-auto flex justify-between items-center"
-        style="min-height: calc(100vh - 100px);"
-    >
-      <slot name="content" />
-    </main>
+    <slot name="content" />
+
   </template>
