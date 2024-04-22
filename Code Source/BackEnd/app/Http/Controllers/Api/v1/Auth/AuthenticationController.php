@@ -34,4 +34,11 @@ class AuthenticationController extends Controller
             return $this->authenticationService->logout($request);
         } catch (Exception $e) { return $this->responseWithErrors("Authentication", "Logout", $e); }
     }
+
+    public function check(Request $request)
+    {
+        try {
+            return $this->authenticationService->check($request);
+        } catch (Exception $e) { return $this->responseWithErrors("Authentication", "Check", $e); }
+    }
 }

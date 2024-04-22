@@ -34,7 +34,13 @@ class WebsiteController extends Controller
         try {
             return response()->json([
                 'status' => true,
-                'data' => Company::withoutTrashed()->get(),
+                'data' => [
+                    [ 'id' => 1, 'name' => 'Jumia', 'logo' => 'RrDE8CosYVIkF8MDiQrCIVfUSYxqgUyo8KBSGy4Z.png', ],
+                    [ 'id' => 1, 'name' => 'Capgemini', 'logo' => 'ITEh3Bbj4QpVzzmTRIL5RSiSJCdOsV7iTCQfzwr4.png', ],
+                    [ 'id' => 1, 'name' => 'Inetum', 'logo' => '47nJxfU74EZr4HT62AYQJw6rlnYuT0mZenTf7xjM.png', ],
+                    [ 'id' => 1, 'name' => 'Akkodis', 'logo' => 'VkTyYV5pfMAUnziCHUC3HzsIR9Efy0wef6j80jEW.png', ],
+                    [ 'id' => 1, 'name' => 'Amazon', 'logo' => 'YtdabAfqAlXyw6UlUklhTBBJOHxijJJZ1qFiA9Ak.png', ],
+                ],
             ]);
         } catch (Exception $e) { return $this->responseWithErrors("Website", "companies", $e); }
     }

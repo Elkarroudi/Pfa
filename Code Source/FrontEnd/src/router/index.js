@@ -5,17 +5,17 @@
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
-      {
-        path: '/',
-        name: 'home',
-        component: HomePage,
-      },
-      {
-        path: '/login',
-        name: 'login',
-        component: () => import('../views/Authentication/Login.vue'),
-      },
 
+      /* Website Routes */
+      { path: '/', name: 'Home', component: HomePage, },
+
+      /* Authentication */
+      { path: '/login', name: 'Login', component: () => import('../views/Authentication/Login.vue'), },
+      { path: '/register', name: 'Registration', component: () => import('../views/Authentication/Registration.vue'), },
+      { path: '/logout', name: 'Logout', component: () => import('../views/Authentication/Logout.vue'), },
+
+      /* Admin Routes */
+      { path: '/admin/profile/', name: 'AdminProfile', component: () => import('../views/Admin/Profile.vue'), },
     ]
   })
 

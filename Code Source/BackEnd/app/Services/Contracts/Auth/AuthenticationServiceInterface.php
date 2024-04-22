@@ -9,4 +9,5 @@ interface AuthenticationServiceInterface
     public function login(Request $request);
     public function refresh(Request $request);
     public function logout(Request $request);
+    public function check(Request $request);
 }

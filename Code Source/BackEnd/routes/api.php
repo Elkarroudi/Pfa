@@ -116,6 +116,6 @@ Route::prefix('v1')->group(function () {
     Route::any('/public/listing/search/', [WebsiteController::class, 'search']);
 
     Route::any('/public/company/all/', [WebsiteController::class, 'companies']);
-
+    Route::any('/auth/check/', [AuthenticationController::class, 'check']);
 
 });
