@@ -10,15 +10,15 @@
       name: "Header",
       setup() {
         let data = reactive({ authorized : false, userType: '', });
-        let userProfile = reactive({link: '/admin/profile/', });
+        let userProfile = reactive({link: '/admin/', });
 
         async function checkAuthorization() {
           let response = await check(data.userType);
           data.authorized = response.status;
           data.userType = response.userType;
+          checkUserType(data, userProfile);
         } checkAuthorization();
 
-        checkUserType(data, userProfile);
         return { data, userProfile, };
       },
       components: {

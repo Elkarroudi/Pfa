@@ -101,13 +101,14 @@ Route::prefix('v1')->group(function () {
             Route::prefix('listing')->group(function () {
                 Route::any('/all/', [ListingController::class, 'index']);
                 Route::any('/create/', [ListingController::class, 'create']);
-                Route::any('/update/{id}/', [ListingController::class, 'update']);
+                Route::any('/update/{id}/', [ListingController::class, 'update']);  /* ----  */
                 Route::any('/delete/{id}/', [ListingController::class, 'delete']);
             });
 
+            Route::any('/recruiter/company/all/', [CompanyController::class, 'index']);
             Route::any('/recruiter/application/all/', [RecruiterController::class, 'recruiterJobsApplicant']);
-            Route::any('/recruiter/application/{status}/{id}/', [RecruiterController::class, 'changeStatus']);
-            Route::any('/recruiter/statistics/', [RecruiterController::class, 'statistics']);
+            Route::any('/recruiter/application/{status}/{id}/', [RecruiterController::class, 'changeStatus']); /* ----  */
+            Route::any('/recruiter/statistics/', [RecruiterController::class, 'statistics']); /* ----  */
         });
     });
 

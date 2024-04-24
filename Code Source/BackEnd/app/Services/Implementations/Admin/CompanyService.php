@@ -33,8 +33,8 @@ class CompanyService extends BaseService implements CompanyServiceInterface
                 $validatedData = $request->validate([
                     "name" => "required",
                     "website" => "required",
-                    "logo" => "required",
-                    "slogan" => "required",
+                    "logo" => "required|image",
+                    "slogan" => "required|image",
                 ]);
             } catch (\Illuminate\Validation\ValidationException $validationException) { return $this->responseWithErrors($validationException->validator->errors()->all()); }
 

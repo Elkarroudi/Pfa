@@ -19,7 +19,7 @@ class AccountService extends BaseService implements AccountServiceInterface
     public function accountInformation(Request $request)
     {
         if ($request->isMethod('GET')) {
-            return $this->accountRepository->userInformation();
+            return $this->responseWithSuccess($this->accountRepository->userInformation());
         }
         return $this->incorrectHttpMethod();
     }

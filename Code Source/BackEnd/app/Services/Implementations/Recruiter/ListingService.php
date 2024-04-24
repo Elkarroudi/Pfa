@@ -46,6 +46,7 @@ class ListingService extends BaseService implements ListingServiceInterface
             } catch (\Illuminate\Validation\ValidationException $validationException)
             { return $this->responseWithErrors($validationException->validator->errors()->all()); }
 
+            $validatedData['status'] = 'Pending';
             $validatedData['recruiter_id'] = (new Recruiter())->getId('recruiters');
             $listing = $this->listingRepository->create($validatedData);
             return $this->responseWithSuccess($listing);
@@ -67,7 +68,6 @@ class ListingService extends BaseService implements ListingServiceInterface
                         'location' => 'required',
                         'salary' => 'required',
                         'employment_type' => 'required',
-                        'expiration_date' => 'required'
                     ]);
                 } catch (\Illuminate\Validation\ValidationException $validationException)
                 { return $this->responseWithErrors($validationException->validator->errors()->all()); }

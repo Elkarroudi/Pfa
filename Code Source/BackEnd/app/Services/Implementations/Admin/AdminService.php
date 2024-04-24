@@ -46,7 +46,7 @@ class AdminService extends BaseService implements AdminServiceInterface
     public function statistics(Request $request)
     {
         if ($request->isMethod('GET')) {
-            return $this->adminRepository->statistics();
+            return $this->responseWithSuccess($this->adminRepository->statistics());
         }
         return $this->incorrectHttpMethod();
     }
@@ -73,7 +73,7 @@ class AdminService extends BaseService implements AdminServiceInterface
     public function users(Request $request)
     {
         if ($request->isMethod('GET')) {
-            return $this->adminRepository->users();
+            return $this->responseWithSuccess($this->adminRepository->users());
         }
         return $this->incorrectHttpMethod();
     }

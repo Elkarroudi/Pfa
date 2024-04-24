@@ -1,6 +1,7 @@
 
   import { createRouter, createWebHistory } from 'vue-router'
   import HomePage from "@/views/website/HomePage.vue";
+  import Account from "@/views/Admin/Account.vue";
 
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,7 +16,10 @@
       { path: '/logout', name: 'Logout', component: () => import('../views/Authentication/Logout.vue'), },
 
       /* Admin Routes */
-      { path: '/admin/profile/', name: 'AdminProfile', component: () => import('../views/Admin/Profile.vue'), },
+      { path: '/admin', component: Account, },
+
+
+      { path: '/recruiter', name: 'AdminProfile', component: () => import('../views/Recruiter/RecruiterAccount.vue'), },
     ]
   })
 
