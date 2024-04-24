@@ -6,6 +6,7 @@
     import Companies from "@/views/Admin/Companies.vue";
     import Settings from "@/views/Admin/Settings.vue";
     import Profile from "@/views/Admin/Profile.vue";
+    import Listings from "@/views/Admin/Listings.vue";
     import { getStatistics, getUsers, getCompanies,  } from "../../../functions/Admin.js";
     import { reactive } from "vue";
 
@@ -27,7 +28,7 @@
         currentPage: 'Statistics'
       }),
       components: {
-        DashboardLayout, Statistics, Users, Companies, Settings, Profile,
+        DashboardLayout, Statistics, Users, Companies, Settings, Profile, Listings,
       },
     }
   </script>
@@ -41,7 +42,7 @@
           <p class="font-[600] text-xl" >a new way of controlling data ! </p>
 
           <div class="mt-10">
-            <component :is="currentPage" :data="adminData[currentPage.toLowerCase()]"></component>
+            <component :is="currentPage" :data="adminData[currentPage.toLowerCase()]" ></component>
           </div>
         </section>
 

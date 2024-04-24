@@ -110,3 +110,47 @@
         }
     }
 
+    export async function getListing(adminData) {
+        let response = await fetch(`${URL}/v1/admin/listing/all/`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${data.accessToken}`
+            },
+        }).then(response => response.json());
+
+        if (!response.status)
+        {
+            console.log(response.errors);
+            return false;
+        }
+
+        else {
+            adminData.content = response.data;
+            return true;
+        }
+    }
+
+    export async function changeStatus(status, id, index, listings) {
+        let response = await fetch(`${URL}/v1/admin/listing/${status}/${id}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `bearer ${data.accessToken}`
+            },
+        }).then(response => response.json());
+
+        if (!response.status)
+        {
+            console.log(response.errors);
+            return false;
+        }
+
+        else {
+            listings[index].status = status;
+            return true;
+        }
+    }
+
+
+

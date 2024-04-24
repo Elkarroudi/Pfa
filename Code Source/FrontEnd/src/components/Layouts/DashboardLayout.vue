@@ -8,6 +8,7 @@
       setup() {
         let links = [
           { name: 'Statistics', icon: 'statistics.png', },
+          { name: 'Listings', icon: 'jobs.png', },
           { name: 'Users', icon: 'users.png', },
           { name: 'Companies', icon: 'company.png', },
           { name: 'Profile', icon: 'profile.png', },

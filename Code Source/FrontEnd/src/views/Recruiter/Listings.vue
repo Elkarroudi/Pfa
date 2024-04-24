@@ -1,6 +1,5 @@
   <script>
     import {reactive} from "vue";
-    import {useRouter} from "vue-router";
     import {getRecruiterListings, deleteListing, getCompanies, createNewListing, updateListing } from "../../../functions/Recruiter.js";
     import Input from "@/components/Essential/Input.vue";
     import Errors from "@/components/Essential/Errors.vue";
@@ -10,7 +9,6 @@
       name: "Listings",
       components: {FormBtn, Errors, Input},
       setup () {
-        let router = useRouter();
         let errors = reactive({content: [], });
         let updateErrors = reactive({content: [], });
         let data = reactive({ content: [], companies: [], });
@@ -131,7 +129,12 @@
           </div>
         </td>
         <td>
-          <span><span class="bg-yellow-500 px-2 rounded" >status :</span> {{ listing.status }}</span>
+          <span class="space-x-2" >
+              <span class="bg-yellow-500 px-2 rounded" >status :</span>
+              <span v-if="listing.status === 'Pending'" class="bg-orange-500 text-white px-2 rounded" > {{ listing.status.toLowerCase() }}</span>
+              <span v-if="listing.status === 'Approved'" class="bg-green-500 px-2 rounded text-white" > {{ listing.status.toLowerCase() }}</span>
+              <span v-if="listing.status === 'Refused'" class="bg-red-500 px-2 rounded text-white" > {{ listing.status.toLowerCase() }}</span>
+            </span>
         </td>
         <td>
           <div class="flex gap-x-2" >
