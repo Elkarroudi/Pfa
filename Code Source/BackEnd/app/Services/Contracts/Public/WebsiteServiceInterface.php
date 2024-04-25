@@ -8,4 +8,5 @@ interface WebsiteServiceInterface
 {
     public function validatedListing(Request $request);
     public function search(Request $request);
+    public function company(Request $request);
 }

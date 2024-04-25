@@ -29,7 +29,7 @@
         }"
         :style="{ width: btnWidth }"
     >
-        <img v-if="icon" :src="icon" alt="Button Icon" class="h-[20px]" >
+        <img v-if="icon" :src="icon" alt="Button Icon" class="h-[28px]" >
         <slot />
     </RouterLink>
   </template>

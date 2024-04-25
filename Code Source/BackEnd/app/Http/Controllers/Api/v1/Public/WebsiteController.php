@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1\Public;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\Listing;
 use App\Services\Contracts\Public\WebsiteServiceInterface;
 use Illuminate\Http\Request;
 use Mockery\Exception;
@@ -29,6 +30,13 @@ class WebsiteController extends Controller
         } catch (Exception $e) { return $this->responseWithErrors("Website", "Search", $e); }
     }
 
+    public function company(Request $request)
+    {
+        try {
+            return $this->websiteService->company($request);
+        } catch (Exception $e) { return $this->responseWithErrors("Website", "Search", $e); }
+    }
+
     public function companies(Request $request)
     {
         try {
@@ -43,6 +51,17 @@ class WebsiteController extends Controller
                 ],
             ]);
         } catch (Exception $e) { return $this->responseWithErrors("Website", "companies", $e); }
+    }
+
+    public function getListingDetails(Request $request, $id)
+    {
+        try {
+            $listing = Listing::where('id', '=', $id);
+            return response()->json([
+                'status' => true,
+                'data' => $listing->with('company')->with('applications')->with('recruiter.user')->get(),
+            ]);
+        } catch (Exception $e) { return $this->responseWithErrors("Website", "getListingDetails", $e); }
     }
 
 }

@@ -11,7 +11,7 @@ class ApplicationRepository implements ApplicationRepositoryInterface
 
     public function index(JobSeeker $jobSeeker)
     {
-        return $jobSeeker->applications()->get();
+        return $jobSeeker->applications()->with('listing')->get();
     }
 
     public function create($data)

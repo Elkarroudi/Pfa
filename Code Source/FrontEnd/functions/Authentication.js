@@ -65,7 +65,7 @@
   export function checkUserType(data, userProfile) {
 
     if (data.userType === 'Job Seeker')
-    { return userProfile.link = '/seeker/profile/'; }
+    { return userProfile.link = '/seeker/'; }
 
     else if (data.userType === 'Recruiter')
     { return userProfile.link = '/recruiter/'; }

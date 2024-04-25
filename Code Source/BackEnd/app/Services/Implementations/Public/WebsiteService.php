@@ -28,10 +28,21 @@ class WebsiteService extends BaseService implements WebsiteServiceInterface
     {
         if ($request->isMethod('POST')) {
             try {
-                $arguments = $request->validate(['query' => 'required']);
-                if ($request->has('location')) { $arguments['location'] = $request->input('location'); }
+                $arguments = $request->validate([
+                    'query' => 'nullable',
+                    'location' => 'nullable',
+                ]);
             } catch (\Illuminate\Validation\ValidationException $validationException) { return $this->responseWithErrors($validationException->validator->errors()->all()); }
+
             return $this->responseWithSuccess($this->websiteRepository->search($arguments));
+        }
+        return $this->incorrectHttpMethod();
+    }
+
+    public function company(Request $request)
+    {
+        if ($request->isMethod('GET')) {
+            return $this->responseWithSuccess($this->websiteRepository->company());
         }
         return $this->incorrectHttpMethod();
     }

@@ -55,8 +55,6 @@ class EducationService extends BaseService implements EducationServiceInterface
                     $validatedData = $request->validate([
                         'university' => 'required',
                         'field_of_study' => 'required',
-                        'start_date' => 'required|date',
-                        'graduation_date' => 'required|date',
                     ]);
                 } catch (\Illuminate\Validation\ValidationException $validationException)
                 { return $this->responseWithErrors($validationException->validator->errors()->all()); }

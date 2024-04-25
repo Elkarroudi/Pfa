@@ -8,5 +8,6 @@ interface WebsiteRepositoryInterface
 {
     public function validatedListing();
     public function search($arguments);
+    public function company();
 
 }

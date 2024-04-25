@@ -39,7 +39,8 @@
           <Button type="primary" link-to="/register" > register </Button>
         </nav>
         <nav v-else class="flex gap-x-4" >
-          <Button type="third" :link-to="userProfile.link" icon="/icons/login.png" > Account </Button>
+          <Button type="third" link-to="/jobs" > jobs </Button>
+          <Button type="secondary" :link-to="userProfile.link" icon="/icons/login.png" > Account </Button>
           <Button type="warning" link-to="/logout" icon="/icons/logout.png" > log out </Button>
         </nav>
 

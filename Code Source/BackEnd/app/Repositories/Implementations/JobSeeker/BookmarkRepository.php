@@ -11,7 +11,7 @@ class BookmarkRepository implements BookmarkRepositoryInterface
 
     public function index(JobSeeker $jobSeeker)
     {
-        return $jobSeeker->bookmarks()->get();
+        return $jobSeeker->bookmarks()->with('listing.company')->get();
     }
 
     public function create($data)
