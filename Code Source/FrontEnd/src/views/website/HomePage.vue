@@ -40,11 +40,11 @@
             </p>
           </div>
 
-          <section class="bg-gray-200 w-full py-8 flex items-center justify-center gap-x-4" >
+          <section class="bg-gray-200 w-full py-8 flex flex-wrap items-center justify-center gap-x-4" >
             <div class="flex gap-x-[30px]" >
               <div  v-for="company in data.companies" :key="company.id" >
                 <img
-                    class="h-[40px]"
+                    class="h-[30px] md:h-[40px]"
                     :src="'http://127.0.0.1:8000/storage/' + company.logo" :alt="company.name + 'logo'"
                     :title="'Company Name : ' + company.name"
                 />
