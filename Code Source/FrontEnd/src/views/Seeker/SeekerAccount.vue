@@ -14,7 +14,7 @@
         SeekerDashLayout, Profile, Settings, Bookmark, Applications, Educations, Experiences
       },
       data:() => ({
-        currentPage: 'Experiences',
+        currentPage: 'Profile',
       }),
     }
   </script>

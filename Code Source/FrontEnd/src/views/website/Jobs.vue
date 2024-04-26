@@ -88,7 +88,7 @@
             >
               <RouterLink :to="`/jobs/`+ listing.id + '/'" class="flex items-center justify-between h-[100%]" >
                 <div class="flex items-center justify-center bg-gray-100 w-[20%] rounded h-[100%]" >
-                  <img :src="'http://127.0.0.1:8000/storage/' + listing.company.logo" alt="icon" class="w-[50px] md:w-[110px]" >
+                  <img :src="'http://127.0.0.1:8000/storage/' + listing.company.slogan" alt="icon" class="w-[50px] md:w-[110px] rounded" >
                 </div>
                 <div class="w-[75%] flex justify-between items-center" >
                   <div>

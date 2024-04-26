@@ -63,7 +63,6 @@ Route::prefix('v1')->group(function () {
                 Route::any('/listing/{status}/{id}/', [AdminController::class, 'changeStatus']);
                 Route::any('/statistics/', [AdminController::class, 'statistics']);
                 Route::any('/users/', [AdminController::class, 'users']);
-                Route::any('/register/', [AdminController::class, 'registerAnAdmin']);
             });
         });
 

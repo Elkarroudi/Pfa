@@ -1,7 +1,9 @@
 
-  import { createRouter, createWebHistory } from 'vue-router'
+  import {createRouter, createWebHistory, useRouter} from 'vue-router'
   import HomePage from "@/views/website/HomePage.vue";
+  import check from "../../constants/TokenManager.js";
 
+  let pageRouter = useRouter();
   const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
@@ -15,6 +17,15 @@
         path: '/admin',
         name: 'AdminProfile',
         component: () => import('../views/Admin/Account.vue'),
+        async beforeEnter() {
+            let response = await check();
+            if (response.status) {
+              if (response.userType !== 'Admin') {
+                alert('unauthenticated or forbidden to access this page !');
+                return await pageRouter.push('/');
+              }
+            }
+        },
       },
       {
         path: '/recruiter',
